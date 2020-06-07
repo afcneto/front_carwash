@@ -1,4 +1,5 @@
 import React from 'react';
+import { ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
@@ -10,7 +11,7 @@ import history from './services/history';
 
 import { store, persistor } from './store';
 
-import GlobalStyle from './styles/globais';
+import GlobalStyle from './styles/global';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Router history={history}>
           <Routes />
           <GlobalStyle />
+          <ToastContainer autoclose={3000} />
         </Router>
       </PersistGate>
     </Provider>

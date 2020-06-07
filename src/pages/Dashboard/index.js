@@ -1,7 +1,8 @@
 import React from 'react';
+import api from '~/services/api';
 
-function Dashboard() {
+export default function Dashboard() {
+  api.get('agendamentos');
+
   return <h1>Dashboard</h1>;
 }
-
-export default Dashboard;
