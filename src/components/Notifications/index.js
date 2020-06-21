@@ -24,9 +24,9 @@ export default function Notifications() {
 
   useEffect(() => {
     async function loadNotifications() {
-      const response = await api.get('notifications');
+      const response = await api.get('notificacoes');
 
-      const data = response;data.map(notification => ({
+      const data = response.data.map(notification => ({
         ...notification,
         timeDistance: formatDistance(
           parseISO(notification.createdAt),
@@ -35,7 +35,7 @@ export default function Notifications() {
         )
       }))
 
-      setNotifications(response.data);
+      setNotifications(data);
     }
 
     loadNotifications();
@@ -46,7 +46,7 @@ export default function Notifications() {
   }
 
   async function handleMarkAsRead(id) {
-    await api.put(`notifications/${id}`);
+    await api.put(`notificacoes/${id}`);
 
     setNotifications(
       notifications.map(notification =>
@@ -61,12 +61,12 @@ export default function Notifications() {
         <MdNotifications color="#f29200" size={20} />
       </Badge>
 
-      <NotificationList>
+      <NotificationList visible={visible}>
         <Scroll>
           { notifications.map(notification => (
-            <Notification key={notification.id} unread={!notification.read}>
+            <Notification key={notification._id} unread={!notification.read}>
               <p>{notification.content}</p>
-              <time>notification.timeDistance</time>
+              <time>{notification.timeDistance}</time>
               {!notification.read && (
                 <button
                   type="button"

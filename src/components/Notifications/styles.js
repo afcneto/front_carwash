@@ -21,8 +21,9 @@ export const Badge = styled.button`
         widht: 8px;
         height: 8px;
         background: red;
-        content: '0';
+        content: '^';
         border-radius: 50%;
+        color: red;
       }
     `}
 `;
@@ -89,7 +90,7 @@ export const Notification = styled.div`
       display: inline-block;
       width: 8px;
       height: 8px;
-      background: red;
+      background: #ff892e;
       border-radius: 50%;
       margin-left: 10px;
     }
